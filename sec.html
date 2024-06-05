@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Hercor College</title>
+    <style>
+        /*section slider*/
+        html,body{
+    padding:0;
+    margin: 0;
+}
+.galleryContainer{
+    width: 100%;
+    height: 100vh;
+    max-width: 2000px;
+    margin: auto;
+    user-select: none;
+    box-shadow: 0px 0px 3px 1px #00000078;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.galleryContainer .slideShowContainer{
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    background-color: gainsboro;
+    position: relative;
+}
+.galleryContainer .slideShowContainer #playPause{
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    background-image: url(images/playPause.png);
+    background-repeat: no-repeat;
+    z-index: 5;
+    background-size: cover;
+    margin: 5px;
+    cursor: pointer;
+}
+.galleryContainer .slideShowContainer #playPause:hover{
+    opacity: .7;
+}
+.galleryContainer .slideShowContainer .imageHolder{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+.galleryContainer .slideShowContainer .imageHolder img{
+    width: 100%;
+    height: 100%;
+}
+.galleryContainer .slideShowContainer .imageHolder .captionText{
+    display: none;
+}
+
+.galleryContainer .slideShowContainer .leftArrow,.galleryContainer .slideShowContainer .rightArrow{
+    width: 50px;
+    background: #00000036;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    transition: background 0.5s;
+    height: 72px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.galleryContainer .slideShowContainer .rightArrow{
+    left: auto;
+    right: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.galleryContainer .slideShowContainer .leftArrow:hover,.galleryContainer .slideShowContainer .rightArrow:hover{
+    background: #000000a8;
+    cursor: pointer;
+}
+.galleryContainer .arrow{
+    display: inline-block;
+    border: 3px solid white;
+    width: 10px;
+    height: 10px;
+    border-left: none;
+    border-bottom: none;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.galleryContainer .arrow.arrowLeft{
+    transform: rotateZ(-135deg);
+}
+.galleryContainer .arrow.arrowRight{
+    transform: rotateZ(45deg);
+}
+
+
+.galleryContainer .slideShowContainer>.captionTextHolder{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    background: #00000047;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+}
+.galleryContainer .slideShowContainer>.captionTextHolder>.captionText{
+    margin: 0;
+}
+
+.galleryContainer #dotsContainer{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+.galleryContainer #dotsContainer .dots{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-color: #bbb;
+    cursor: pointer;
+    transition:background-color 0.5s;
+}
+.galleryContainer #dotsContainer .dots:first-child{
+    margin-left: 0;
+}
+.galleryContainer #dotsContainer .dots:hover,.galleryContainer #dotsContainer .dots.active{
+    background-color: #717171;;
+}
+
+
+
+
+.galleryContainer .moveLeftCurrentSlide{
+    animation-name: moveLeftCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+
+}
+.galleryContainer .moveLeftNextSlide{
+    animation-name: moveLeftNext;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveLeftCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: -100%;opacity: 1;}
+}
+@keyframes moveLeftNext {
+    from {margin-left: 100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+
+
+.galleryContainer .moveRightCurrentSlide{
+    animation-name: moveRightCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+.galleryContainer .moveRightPrevSlide{
+    animation-name: moveRightPrev;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveRightCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: 100%;opacity: 1;}
+}
+@keyframes moveRightPrev {
+    from {margin-left: -100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+.slideTextFromBottom {
+    animation-name: slideTextFromBottom;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromBottom {
+    from {opacity: 0;margin-top: 100px}
+    to {opacity: 1;margin-top: 0px;}
+}
+.slideTextFromTop {
+    animation-name: slideTextFromTop;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromTop {
+    from {opacity: 0;margin-top: -100px}
+    to {opacity: 1;margin-top: 0px;}
+}
+        /* Add your CSS styles here */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px; /* Adjusted padding */
+        }
+
+        .section-text {
+            margin-left: 70px;
+        }
+
+        .section-text h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            max-width: 550px;
+            color: rgb(1, 105, 131);
+        }
+
+        .section-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+            max-width: 600px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-container #philosophy-button {
+            background-color: rgb(1, 105, 131);
+            color: white;
+        }
+
+        .button-container #apply-button {
+            background-color: white;
+            color: rgb(1, 105, 131);
+            border: 2px solid rgb(1, 105, 131);
+        }
+
+        .button-container #apply-button:hover {
+            background-color: rgb(1, 105, 131);
+            color: white;
+        }
+
+        .button-container #apply-button:hover + #philosophy-button {
+            background-color: white;
+            color: rgb(1, 105, 131);
+        }
+
+        .image-container {
+            display: flex;
+            margin-left: 20px; /* Adjusted margin */
+            margin-right: 70px;
+            margin-top: 60px;
+            border-bottom: 6px solid rgb(90, 222, 245);
+            border-right: 6px solid rgb(0, 140, 255);
+         border-radius: 10px;
+        }
+
+        .image-container img {
+            height: auto;
+            margin-bottom: 20px;
+            
+        }
+
+        .image-container > div {
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .image-container > div img:nth-child(1),
+        .image-container > div img:nth-child(2) {
+            width: 200px; /* Increased width for images 2 and 3 */
+        }
+
+        .image-container > div img:nth-child(3),
+        .image-container > div img:nth-child(4) {
+            width: 400px; /* Increased width for images 1 and 4 */
+        }
+
+        .image-container > div img:nth-child(2),
+        .image-container > div img:nth-child(4) {
+            margin-left: 20px; /* Space between images */
+        }
+
+        /* section grid*/
+        /*--------------------------------------------------------------
+Accessibility
+--------------------------------------------------------------*/
+/* Text meant only for screen readers */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+} 
+
+/*--------------------------------------------------------------
+General styling
+--------------------------------------------------------------*/
+body {
+  margin: 0;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 100%;
+  font-size: 1.2em;
+}
+
+img {
+	display: block;
+	border: 0;
+	width: 100%;
+	height: auto;
+}
+
+code {
+	font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+  font-weight: bold;
+}
+
+/* Header */
+
+.masthead {
+	text-align: center;
+	border-bottom: 1px solid hsl(0, 0%, 90%);
+    background-color: #21759b;
+    padding:20px;
+}
+
+.intro {
+  margin: 0 auto;
+  padding: 1em 1em 2em;
+  max-width: 50em;
+  font-size: 90%;
+  text-align: left;
+  line-height: 1.4em;
+  columns: 2;
+  column-gap: 2em;
+}
+
+.intro p {
+  margin: 0 0 1em;
+}
+
+/*--------------------------------------------------------------
+Cards:
+--------------------------------------------------------------*/
+
+.cards {
+	max-width: 25em;
+	margin: 1em auto;
+	padding: 0;
+	list-style-type: none;
+
+}
+
+.cards a {
+	display: block;
+	margin-bottom: 1em;
+	text-decoration: none;
+}
+
+.caption {
+	padding: 1em;
+	font-size: 90%;
+	color: black;
+}
+
+.caption-title {
+	margin: 0;
+	font-size: 1.4em;
+	line-height: 1em;
+}
+
+.location {
+  padding: .5em 0;
+  color: hsl(0, 0%, 40%);
+}
+
+.caption p {
+	margin-top: .5em;
+	margin-bottom: 0;
+  line-height: 1.3em;
+}
+
+.cards a:focus .caption,
+.cards a:hover .caption {
+	background: hsl(0, 0%, 97%);
+}
+
+/*--------------------------------------------------------------
+CSS Grid layout for wider screens, when browser supports grid:
+--------------------------------------------------------------*/
+@supports (grid-area: auto) {
+
+	@media screen and (min-width: 27em) {
+
+		.cards {
+			margin: 0 auto;
+			padding: 1em;
+		}
+    
+    .card-item,
+    .card-item a {
+      display: flex;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .cards a:focus,
+		.cards a:hover {
+			outline: 1px solid hsl(0, 0%, 80%);
+		}
+    
+    .cards a:focus .caption,
+    .cards a:hover .caption {
+      background: white;
+    }
+    
+		.card {
+			margin: .5em;
+			display: grid;
+			grid-template-columns: 8em auto;
+      overflow: hidden;
+		}
+    
+ 
+    
+    .caption {
+      background: white;
+    }
+    
+	}
+
+	@media screen and (min-width: 62em) {
+
+		.cards {
+			max-width: none;
+			margin: 1em 0;
+      padding: 0 1em;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, 25em);
+			grid-gap: 1em;
+			justify-content: center;
+		}
+
+		.double {
+			grid-row: span 3;
+		}
+
+		.double .card {
+			display: block;
+		}
+    
+    .double img {
+      height: calc( (100% / 3) * 2 + .5em);
+    }
+
+	}
+
+}
+
+    </style>
+</head>
+<body>
+<section id ="slide">
+ 
+
+    
+<div class="galleryContainer">
+    <div class="slideShowContainer">
+        
+        <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+        <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+        <div class="captionTextHolder"><p class="captionText slideTextFromTop"></p></div>
+        <div class="imageHolder">
+            <img src="caprisaa.jpg">1366X768
+            <p class="captionText">Pic - 01</p>
+        </div>
+        <div class="imageHolder">
+            <img src="board.jpg">
+            <p class="captionText">Pic - 02</p>
+        </div>
+        <div class="imageHolder">
+            <img src="capiz.jpg">
+            <p class="captionText">Pic - 03</p>
+        </div>
+        <div class="imageHolder">
+            <img src="csday.jpg">
+            <p class="captionText">Pic - 04</p>
+        </div>
+    </div>
+    <div id="dotsContainer"></div>
+</div>
+
+
+</section>
+<section id="home">
+    <div class="section-text">
+        <h2>Welcome to the Hercor College</h2>
+        <p>Founded over a century ago, Hercor College has established itself as a premier institution dedicated to academic excellence and the holistic development of its students. Known as the "Home of the Nation Builders," Hercor College prides itself on nurturing individuals who become influential leaders and innovators across various industries.
+        With a strong commitment to making quality education accessible, Hercor College continuously evolves its programs and facilities to meet the dynamic needs of today's students. The college offers a diverse array of courses, scholarships, and academic support to ensure that every student can achieve their full potential.
+        <br><br> At Hercor College, the focus is not just on imparting knowledge but also on fostering values, critical thinking, and a sense of social responsibility. The institution is dedicated to securing the future of its students and contributing positively to the nation's growth and development through education that truly works.</p>
+        <div class="button-container">
+            <button id="apply-button">Apply Now</button>
+            <button id="philosophy-button">HC Philosophy of Education</button>
+        </div>
+    </div>
+    <div class="image-container">
+        <div>
+            <img src="aboutme.jpg" alt="Image 1">
+            <img src="aboutme.jpg" alt="Image 2">
+        </div>
+        <div>
+            <img src="aboutme.jpg" alt="Image 3">
+            <img src="aboutme.jpg" alt="Image 4">
+        </div>
+    </div>
+</section>
+<section id ="grid">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+<header class="masthead">
+  <h1 class="site-title">Interactive Grid Gallery</h1>
+  <div class="intro">
+    <p>Interactive gallery using CSS Grid for both overall layout and individual card layout. This layout was inspired by the <a href="https://twitter.com/i/moments" target="_blank" rel="nofollow">Twitter Moments</a> page and showcases how CSS Grid allows for advanced responsive card-based layouts at multiple levels.</p>
+    <p>This example is based on one of the exercises from my upcoming <a href="https://lnkd.in/mor10" target="_blank" rel="nofollow">LinkedIn Learning</a> and <a href="https://lynda.com/mor10" target="_blank" rel="nofollow">Lynda.com</a> course "Advanced Layouts with CSS Grid."
+  </div>
+</header><!-- .masthead -->
+
+<main id="content" class="main-area">
+  <ul class="cards">
+    <li class="card-item double">
+     <a href="https://unsplash.com/@andozo?photo=crVO0UMdoVU" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/crVO0UMdoVU/600x600" alt="Beach. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">Beach</h3>
+            <div class="location">Mølen, Nevlunghamn, Norway</div>
+            <p>This grid item spans one column and three rows to create focus. This is achieved by setting <code>grid-column: span 3;</code>.</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item">
+      <a href="https://unsplash.com/@andozo?photo=xkMArBuwK44" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/xkMArBuwK44/600x600" alt="Pyramid. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">Louvre Museum Pyramid</h3>
+            <div class="location">Paris, France</div>
+            <p>This grid item spans one column and one row. The card contains its own grid which lays out the contents for consistent display.</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item">
+      <a href="https://unsplash.com/@andozo?photo=w3lQVmuK8fw" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/w3lQVmuK8fw/600x600" alt="Fox. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">What Does the Fox Say?</h3>
+            <div class="location">Hovedøya, Norway</div>
+            <p>I was surprised to learn there are foxes on Hovedøya. Then again, there are rabbits, so it makes sense.</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item">
+      <a href="https://unsplash.com/@andozo?photo=lr81rOg-gys" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/lr81rOg-gys/600x600" alt="Owl. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">Brown Barn Owl</h3>
+            <div class="location">Bamble, Norway</div>
+            <p>Unlike the fox, everyone knows what the owl says: "Did you do that?"</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item">
+      <a href="https://unsplash.com/@andozo?photo=KUfkX6gVwBU" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/KUfkX6gVwBU/600x600" alt="Oslo. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">Little Oslo Is Its Own Planet</h3>
+            <div class="location">Oslo, Norway</div>
+            <p>All the streets are different nations, each block a continent.</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item double">
+      <a href="https://unsplash.com/@andozo?photo=8hRYTck6LBQ" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/8hRYTck6LBQ/600x600" alt="Sunset. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">Sunset Lake</h3>
+            <div class="location">Somewhere, Earth</div>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item">
+      <a href="https://unsplash.com/@andozo?photo=i9FLJwYhVQs" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/i9FLJwYhVQs/600x600" alt="Lake. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">Bonfire by the Lake</h3>
+            <div class="location">Øyungen, Norway</div>
+            <p>Low light over a lake as three friends warm themselves by the fire.</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item">
+      <a href="https://unsplash.com/@andozo?photo=5d2ETacuSgw" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/5d2ETacuSgw/600x600" alt="Jump. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">Jumping</h3>
+            <div class="location">Geiranger, Norway</div>
+            <p>Jumping behind a fence overlooking the Geiranger fjord.</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item">
+      <a href="https://unsplash.com/@andozo?photo=vMRMYoLQzwo" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/vMRMYoLQzwo/600x600" alt="Oslo Fjord. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">In the Bay</h3>
+            <div class="location">Oslo, Norway</div>
+            <p>Greeting the ships sailing in on a late summer evening.</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+    <li class="card-item">
+      <a href="https://unsplash.com/@andozo?photo=S2YssLw97l4" target="_blank" rel="nofollow">
+        <figure class="card">
+          <img src="https://source.unsplash.com/S2YssLw97l4/600x600" alt="Oslo Fjord. Photo by Andreas Rønningen">
+          <figcaption class="caption">
+            <h3 class="caption-title">Sparklers and Warm Souls</h3>
+            <div class="location">Porsgrunn, Norway</div>
+            <p>A couple enjoys the sparkles of warm friendship.</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+  </ul>
+</main>
+
+<script>
+    var slideIndex,slides,dots,captionText;
+    function initGallery(){
+        slideIndex = 0;
+        slides=document.getElementsByClassName("imageHolder");
+        slides[slideIndex].style.opacity=1;
+    
+        captionText=document.querySelector(".captionTextHolder .captionText");
+        captionText.innerText=slides[slideIndex].querySelector(".captionText").innerText;
+    
+        //disable nextPrevBtn if slide count is one
+        if(slides.length<2){
+            var nextPrevBtns=document.querySelector(".leftArrow,.rightArrow");
+            nextPrevBtns.style.display="none";
+            for (i = 0; i < nextPrevBtn.length; i++) {
+                nextPrevBtn[i].style.display="none";
+            }
+        }
+    
+        //add dots
+        dots=[];
+        var dotsContainer=document.getElementById("dotsContainer"),i;
+        for (i = 0; i < slides.length; i++) {
+            var dot=document.createElement("span");
+            dot.classList.add("dots");
+            dotsContainer.append(dot);
+            dot.setAttribute("onclick","moveSlide("+i+")");
+            dots.push(dot);
+        }
+        dots[slideIndex].classList.add("active");
+    }
+    initGallery();
+    function plusSlides(n) {
+        moveSlide(slideIndex+n);
+    }
+    function moveSlide(n){
+        var i;
+        var current,next;
+        var moveSlideAnimClass={
+              forCurrent:"",
+              forNext:""
+        };
+        var slideTextAnimClass;
+        if(n>slideIndex) {
+            if(n >= slides.length){n=0;}
+            moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
+            moveSlideAnimClass.forNext="moveLeftNextSlide";
+            slideTextAnimClass="slideTextFromTop";
+        }else if(n<slideIndex){
+            if(n<0){n=slides.length-1;}
+            moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
+            moveSlideAnimClass.forNext="moveRightPrevSlide";
+            slideTextAnimClass="slideTextFromBottom";
+        }
+    
+        if(n!=slideIndex){
+            next = slides[n];
+            current=slides[slideIndex];
+            for (i = 0; i < slides.length; i++) {
+                slides[i].className = "imageHolder";
+                slides[i].style.opacity=0;
+                dots[i].classList.remove("active");
+            }
+            current.classList.add(moveSlideAnimClass.forCurrent);
+            next.classList.add(moveSlideAnimClass.forNext);
+            dots[n].classList.add("active");
+            slideIndex=n;
+            captionText.style.display="none";
+            captionText.className="captionText "+slideTextAnimClass;
+            captionText.innerText=slides[n].querySelector(".captionText").innerText;
+            captionText.style.display="block";
+        }
+    
+    }
+    var timer=null;
+    function setTimer(){
+        timer=setInterval(function () {
+            plusSlides(1) ;
+        },3000);
+    }
+    setTimer();
+    function playPauseSlides() {
+        var playPauseBtn=document.getElementById("playPause");
+        if(timer==null){
+            setTimer();
+            playPauseBtn.style.backgroundPositionY="0px"
+        }else{
+            clearInterval(timer);
+            timer=null;
+            playPauseBtn.style.backgroundPositionY="-33px"
+        }
+    }</script>
+</section>
+
+</body>
+</html>

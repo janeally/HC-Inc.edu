@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hercor College Inc.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo (1).ico" type="image/x-icon">
+    <!-- css link-->
+    <link rel="stylesheet" href="style.css">
+   
+    <link rel="stylesheet" href="footer.css">
+
+    <!-- scroll reveal effect-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- remixicon link-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <!-- boxicon link -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- fontawesome link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- google fonts link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Holtwood+One+SC&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Patrick+Hand&family=Platypi:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+       
+        <div class="logo">
+            <a href="nav.html" class="logo">  <img src="logo.jpg" alt="School Logo">
+            <h3>Hercor College Inc. <span>Lawaan/ Riverside Campus, Roxas City</span></h3>
+            
+        </div>
+        <ul class="navlist">
+            <li><a href="nav.html#home">About</a></li>
+            <li><a href="course.html">Academics</a></li>
+            <li><a href="ADMiN.HTML">Admission</a></li>
+            <li class="mobile-only"><a href="about.html">Courses</a></li>
+            <li class="mobile-only"><a href="Vision-mission.html">Vision Mission Core Values</a></li>
+            <li class="mobile-only"><a href="scholarship.html">Scholarship</a></li>
+            <li class="mobile-only"><a href="about.html">History</a></li>
+            <li><a href="#contact">Contact </a></li>
+        </ul>
+        
+        <div class="bx bx-menu" id="menu-icon"></div>
+        
+    </header>
+    <div class="secondary-header">
+        <div class="submenu">
+            <a href="about.html">History</a>
+            <a href="Vision-mission.html">Philosophy of Education</a>
+            <a href="Vision-mission.html">Mission</a>
+            <a href="Vision-mission.html">Vision</a>
+            <a href="Vision-mission.html">Core Values</a>
+            <a href="Vision-mission.html">Quality Policy</a>
+            <a href="#">Courses</a>
+            <a href="nav.html#content">News</a>
+            <a href="scholarship.html">Scholarship</a>
+        </div>
+    </div>
+    <script>
+        let menu = document.querySelector('#menu-icon');
+        let navlist = document.querySelector('.navlist');
+        let navItems = document.querySelectorAll('.navlist a'); // Select all navigation links
+    
+        menu.onclick = () => {
+            menu.classList.toggle('bx-x');
+            navlist.classList.toggle('open');
+        };
+    
+        // Add event listeners to all navigation links to close the navlist when clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navlist.classList.remove('open');
+                menu.classList.remove('bx-x');
+            });
+        });
+    </script>
+    
+    
+  
+
+<section id ="slide">
+ 
+    <div class="galleryContainer">
+        <div class="slideShowContainer">
+            
+            <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+            <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+            <div class="captionTextHolder"><p class="captionText slideTextFromTop"></p></div>
+            <div class="imageHolder">
+                <img src="caprisaa.jpg">1366X768
+                <p class="captionText">Enroll now</p>
+            </div>
+            <div class="imageHolder">
+                <img src="board.jpg">
+                <p class="captionText">Be part of HC community</p>
+            </div>
+            <div class="imageHolder">
+                <img src="capiz.jpg">
+                <p class="captionText">#BeAJaguar</p>
+            </div>
+            <div class="imageHolder">
+                <img src="csday.jpg">
+                <p class="captionText">Unleash your faith</p>
+            </div>
+        </div>
+        <div id="dotsContainer"></div>
+    </div>
+    
+    
+    </section>
+    <section id="home">
+        <div class="section-text">
+            <h2>Welcome to the Hercor College</h2>
+            <p>Founded over a century ago, Hercor College has established itself as a premier institution dedicated to academic excellence and the holistic development of its students. Known as the "Home of the Nation Builders," Hercor College prides itself on nurturing individuals who become influential leaders and innovators across various industries.
+            With a strong commitment to making quality education accessible, Hercor College continuously evolves its programs and facilities to meet the dynamic needs of today's students. The college offers a diverse array of courses, scholarships, and academic support to ensure that every student can achieve their full potential.
+            <br><br> At Hercor College, the focus is not just on imparting knowledge but also on fostering values, critical thinking, and a sense of social responsibility. The institution is dedicated to securing the future of its students and contributing positively to the nation's growth and development through education that truly works.</p>
+            <div class="button-container">
+                <button id="apply-button">Apply Now</button>
+                <button id="philosophy-button">HC Philosophy of Education</button>
+            </div>
+        </div>
+        <div class="image-container">
+            <div>
+                <img src="tawi2.jpg" alt="Image 1">
+                <img src="gwaps.jpg" alt="Image 2">
+            </div>
+            <div>
+                <img src="US.jpg" alt="Image 3">
+                <img src="ro.jpg" alt="Image 4">
+            </div>
+        </div>
+    </section>
+    <section id ="grid">
+        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    
+    <div class="masthead">
+      <h1 class="site-title">APPLICATION ARE OPEN</h1>
+      <h2>#Be A Jaguar Now!</h2>
+      <div class="intro">
+        <img src="enrollment.jpg">
+        <img src="K-12.jpg" alt="">
+        
+       
+      </div>
+    </div><!-- .masthead -->
+    
+    <main id="content" class="main-area">
+       
+      <ul class="cards">
+        <h1>HC news and events</h1>
+        <li class="card-item double">
+         <a href="https://unsplash.com/@andozo?photo=crVO0UMdoVU" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/crVO0UMdoVU/600x600" alt="Beach. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">Beach</h3>
+                <div class="location">Mølen, Nevlunghamn, Norway</div>
+                <p>This grid item spans one column and three rows to create focus. This is achieved by setting <code>grid-column: span 3;</code>.</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item">
+          <a href="https://unsplash.com/@andozo?photo=xkMArBuwK44" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/xkMArBuwK44/600x600" alt="Pyramid. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">Louvre Museum Pyramid</h3>
+                <div class="location">Paris, France</div>
+                <p>This grid item spans one column and one row. The card contains its own grid which lays out the contents for consistent display.</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item">
+          <a href="https://unsplash.com/@andozo?photo=w3lQVmuK8fw" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/w3lQVmuK8fw/600x600" alt="Fox. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">What Does the Fox Say?</h3>
+                <div class="location">Hovedøya, Norway</div>
+                <p>I was surprised to learn there are foxes on Hovedøya. Then again, there are rabbits, so it makes sense.</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item">
+          <a href="https://unsplash.com/@andozo?photo=lr81rOg-gys" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/lr81rOg-gys/600x600" alt="Owl. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">Brown Barn Owl</h3>
+                <div class="location">Bamble, Norway</div>
+                <p>Unlike the fox, everyone knows what the owl says: "Did you do that?"</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item">
+          <a href="https://unsplash.com/@andozo?photo=KUfkX6gVwBU" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/KUfkX6gVwBU/600x600" alt="Oslo. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">Little Oslo Is Its Own Planet</h3>
+                <div class="location">Oslo, Norway</div>
+                <p>All the streets are different nations, each block a continent.</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item double">
+          <a href="https://unsplash.com/@andozo?photo=8hRYTck6LBQ" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/8hRYTck6LBQ/600x600" alt="Sunset. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">Sunset Lake</h3>
+                <div class="location">Somewhere, Earth</div>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item">
+          <a href="https://unsplash.com/@andozo?photo=i9FLJwYhVQs" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/i9FLJwYhVQs/600x600" alt="Lake. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">Bonfire by the Lake</h3>
+                <div class="location">Øyungen, Norway</div>
+                <p>Low light over a lake as three friends warm themselves by the fire.</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item">
+          <a href="https://unsplash.com/@andozo?photo=5d2ETacuSgw" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/5d2ETacuSgw/600x600" alt="Jump. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">Jumping</h3>
+                <div class="location">Geiranger, Norway</div>
+                <p>Jumping behind a fence overlooking the Geiranger fjord.</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item">
+          <a href="https://unsplash.com/@andozo?photo=vMRMYoLQzwo" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/vMRMYoLQzwo/600x600" alt="Oslo Fjord. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">In the Bay</h3>
+                <div class="location">Oslo, Norway</div>
+                <p>Greeting the ships sailing in on a late summer evening.</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+        <li class="card-item">
+          <a href="https://unsplash.com/@andozo?photo=S2YssLw97l4" target="_blank" rel="nofollow">
+            <figure class="card">
+              <img src="https://source.unsplash.com/S2YssLw97l4/600x600" alt="Oslo Fjord. Photo by Andreas Rønningen">
+              <figcaption class="caption">
+                <h3 class="caption-title">Sparklers and Warm Souls</h3>
+                <div class="location">Porsgrunn, Norway</div>
+                <p>A couple enjoys the sparkles of warm friendship.</p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+      </ul>
+    </main>
+    
+    <script>
+        var slideIndex,slides,dots,captionText;
+        function initGallery(){
+            slideIndex = 0;
+            slides=document.getElementsByClassName("imageHolder");
+            slides[slideIndex].style.opacity=1;
+        
+            captionText=document.querySelector(".captionTextHolder .captionText");
+            captionText.innerText=slides[slideIndex].querySelector(".captionText").innerText;
+        
+            //disable nextPrevBtn if slide count is one
+            if(slides.length<2){
+                var nextPrevBtns=document.querySelector(".leftArrow,.rightArrow");
+                nextPrevBtns.style.display="none";
+                for (i = 0; i < nextPrevBtn.length; i++) {
+                    nextPrevBtn[i].style.display="none";
+                }
+            }
+        
+            //add dots
+            dots=[];
+            var dotsContainer=document.getElementById("dotsContainer"),i;
+            for (i = 0; i < slides.length; i++) {
+                var dot=document.createElement("span");
+                dot.classList.add("dots");
+                dotsContainer.append(dot);
+                dot.setAttribute("onclick","moveSlide("+i+")");
+                dots.push(dot);
+            }
+            dots[slideIndex].classList.add("active");
+        }
+        initGallery();
+        function plusSlides(n) {
+            moveSlide(slideIndex+n);
+        }
+        function moveSlide(n){
+            var i;
+            var current,next;
+            var moveSlideAnimClass={
+                  forCurrent:"",
+                  forNext:""
+            };
+            var slideTextAnimClass;
+            if(n>slideIndex) {
+                if(n >= slides.length){n=0;}
+                moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
+                moveSlideAnimClass.forNext="moveLeftNextSlide";
+                slideTextAnimClass="slideTextFromTop";
+            }else if(n<slideIndex){
+                if(n<0){n=slides.length-1;}
+                moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
+                moveSlideAnimClass.forNext="moveRightPrevSlide";
+                slideTextAnimClass="slideTextFromBottom";
+            }
+        
+            if(n!=slideIndex){
+                next = slides[n];
+                current=slides[slideIndex];
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].className = "imageHolder";
+                    slides[i].style.opacity=0;
+                    dots[i].classList.remove("active");
+                }
+                current.classList.add(moveSlideAnimClass.forCurrent);
+                next.classList.add(moveSlideAnimClass.forNext);
+                dots[n].classList.add("active");
+                slideIndex=n;
+                captionText.style.display="none";
+                captionText.className="captionText "+slideTextAnimClass;
+                captionText.innerText=slides[n].querySelector(".captionText").innerText;
+                captionText.style.display="block";
+            }
+        
+        }
+        var timer=null;
+        function setTimer(){
+            timer=setInterval(function () {
+                plusSlides(1) ;
+            },3000);
+        }
+        setTimer();
+        function playPauseSlides() {
+            var playPauseBtn=document.getElementById("playPause");
+            if(timer==null){
+                setTimer();
+                playPauseBtn.style.backgroundPositionY="0px"
+            }else{
+                clearInterval(timer);
+                timer=null;
+                playPauseBtn.style.backgroundPositionY="-33px"
+            }
+        }</script>
+    </section>
+<section id="info">
+
+    <div class="infotech">
+        <h2>Curious to learn more about Hercor College?</h2>
+    </div>
+</section>
+    
+<section id="contact">
+    <h1>Lets chat!</h1>
+    <div class="form-container">
+        
+            <h4>Fill out this form and we'll get back to you right away</h4>
+       
+
+        <div id="responseMessage"></div> <!-- Display API response message -->
+
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+            <input name="name" type="text" id="name" class="feedback-input" placeholder="Name" required />
+            <input name="email" type="email" id="email" class="feedback-input" placeholder="Email" required />
+            <textarea name="message" id="message" class="feedback-input" placeholder="Comment" required></textarea>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</section>
+   
+
+    <!-- JavaScript file -->
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form input values
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var message = document.getElementById("message").value.trim();
+
+            // Check if any field is empty (this check is optional as HTML5 validation will handle it)
+            if (name === "" || email === "" || message === "") {
+                alert("Error submitting the form. Please fill in all fields.");
+            } else {
+                // Simulate form submission (you can replace this with your actual form submission logic)
+                // Here, I'm just displaying a success message
+                alert("Thank you for your visit!");
+
+                // Clear the form fields
+                document.getElementById("contactForm").reset();
+            }
+        }
+    </script>
+
+  <footer class="footer">
+    <div class="container">
+     <div class="row">
+       <div class="footer-col">
+         <h4>Quick links</h4>
+         <ul>
+           <li><a href="index.html#About"target="_blank">about</a></li>
+           <li><a href="index.html#education"target="_blank">academics</a></li>
+           <li><a href="index.html#skills"target="_blank">skills</a></li>
+           <li><a href="index.html#services"target="_blank">services</a></li>
+           <li><a href="index.html#contact"target="_blank">contact</a></li>
+         </ul>
+       </div>
+
+       <div class="footer-col">
+        <h4>Developer</h4>
+        <ul>
+          <li><a href="index.html#About"target="_blank">Dela Torre Jane</a></li>
+          <li><a href="index.html#education"target="_blank">Dela Cruz Suzanne</a></li>
+          <li><a href="index.html#skills"target="_blank"> Dela Cruz Rogie</a></li>
+          <li><a href="index.html#services"target="_blank">Delfin James Kenneth</a></li>
+          <li><a href="index.html#contact"target="_blank">  Abella Amaziah KentRick</a></li>
+      
+          <li><a href="index.html#contact"target="_blank">Banlor Christian Leslie</a></li>
+        </ul>
+      </div>
+      
+       <div class="footer-col">
+         <h4>Contact Info</h4>
+         <ul>
+           <li><a href="mailto:info@hercorcollege.edu.ph">info@hercorcollege.edu.ph</a>
+           </li>
+           <li><a href="#">Main Campus, Lawaan, Roxas City</a></li>
+           <li><a href="#">(036) 6216-896/897, 0930-714-9807</a></li>
+           
+         </ul>
+       </div>
+       <div class="footer-col">
+         <h4>Lets Connect</h4>
+         <div class="social-links">
+           <a href="https://web.facebook.com/profile.php?id=100077656976623"target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+       
+           <a href="https://ph.linkedin.com/in/jane-dela-torre-893135288"target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+           <a href="https://www.instagram.com"target="_blank"><i class="fa-brands fa-instagram"></i></a>
+         
+         </div>
+       </div>
+     </div>
+    </div>
+    
+</footer>
+<a href="#" id="scrollToTop"><i class="fas fa-arrow-up"></i></a>
+<script>window.addEventListener('scroll', function() {
+    var scrollToTop = document.getElementById('scrollToTop');
+    if (document.documentElement.scrollTop > 0) {
+        scrollToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    } else {
+        scrollToTop.innerHTML = '<i class="fas fa-arrow-down"></i>';
+    }
+});
+
+document.getElementById('scrollToTop').addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags and stylesheets -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+        #contact {
+            background: #e9e9e9;
+            /* Dark background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            flex-direction: column;
+            
+            box-sizing: border-box;
+        }
+
+        h4 {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .form-container h4{
+            color:black;
+        }
+
+      
+        .form-container {
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+           
+            background: none;
+        }
+
+        .feedback-input {
+            color: rgb(10, 10, 10);
+            font-weight: 500;
+            font-size: 18px;
+            border-radius: 5px;
+            line-height: 22px;
+            background-color: transparent;
+            border: 2px solid #7c7c7c;
+            /* Dark gray color for borders */
+            transition: all 0.3s;
+            padding: 13px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            outline: 0;
+        }
+
+        .feedback-input:focus {
+            border: 2px solid #555;
+            /* Slightly lighter gray color on focus */
+        }
+
+        textarea {
+            height: 150px;
+            line-height: 150%;
+            resize: vertical;
+        }
+
+        [type="submit"] {
+            width: 40%;
+            background-color: white;
+            color: rgb(1, 105, 131);
+            border: 2px solid rgb(1, 105, 131);
+            border-radius: 5px;
+           
+            cursor: pointer;
+           
+            font-size: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            transition: all 0.3s;
+            font-weight: 700;
+        }
+
+        [type="submit"]:hover {
+            background-color: rgb(1, 105, 131);
+            color: white;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+   
+<section id="contact">
+    <div class="form-container">
+        
+            <h4>Fill out this form and we'll get back to you right away</h4>
+       
+
+        <div id="responseMessage"></div> <!-- Display API response message -->
+
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+            <input name="name" type="text" id="name" class="feedback-input" placeholder="Name" required />
+            <input name="email" type="email" id="email" class="feedback-input" placeholder="Email" required />
+            <textarea name="message" id="message" class="feedback-input" placeholder="Comment" required></textarea>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</section>
+   
+
+    <!-- JavaScript file -->
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form input values
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var message = document.getElementById("message").value.trim();
+
+            // Check if any field is empty (this check is optional as HTML5 validation will handle it)
+            if (name === "" || email === "" || message === "") {
+                alert("Error submitting the form. Please fill in all fields.");
+            } else {
+                // Simulate form submission (you can replace this with your actual form submission logic)
+                // Here, I'm just displaying a success message
+                alert("Thank you for your visit!");
+
+                // Clear the form fields
+                document.getElementById("contactForm").reset();
+            }
+        }
+    </script>
+</body>
+
+</html>

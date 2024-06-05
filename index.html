@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hercor College.edu.ph</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="logo (1).ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #2fd5eb;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 60px;
+            height: auto;
+            margin-right: 20px;
+            margin-left: 90px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            margin: 0;
+            width: 70%;
+        }
+        .logo h1 span{
+            font-size: 15px;
+            display: block;
+        }
+
+        .primary-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            margin-right:90px;
+        }
+
+        .primary-nav li {
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .primary-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .primary-nav a:hover, .primary-nav .dropdown:hover .dropbtn {
+            background-color: none;
+            color: #b9f5f7;
+        }
+
+        .dropbtn:after {
+            content: ' ▼';
+            font-size: 12px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #49ccec;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            background-color: #333;
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s;
+            z-index: 1;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .sidebar .dropdown-btn:after {
+            content: ' ▼';
+            font-size: 12px;
+            color: white;
+        }
+
+        .sidebar .dropdown-content {
+            display: none;
+            background-color: #444;
+            padding-left: 20px;
+            margin-top: -8px;
+        }
+
+        .sidebar .dropdown-content a {
+            color: #49ccec;
+        }
+
+        .sidebar .dropdown-btn.active + .dropdown-content {
+            display: block;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Main Content Styles */
+        .container {
+            flex: 1;
+            padding: 20px;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        main h1 {
+            margin-top: 0;
+        }
+
+        /* Burger Menu Icon Styles */
+        .toggle-button {
+            display: none; /* Hide by default */
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .primary-nav {
+                display: none; /* Hide primary navigation on small screens */
+            }
+
+            .toggle-button {
+                display: block;
+            }
+
+            .sidebar.active {
+                display: block;
+            }
+        }
+        
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+} 
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+} 
+.carousel-caption {
+    text-shadow: 0 1px 4px rgba(0,0,0,.9);
+  font-size:17px
+}
+.carousel-caption h3 {
+  font-size: 30px;
+  font-family: 'Lato', sans-serif;
+}
+    html,
+    body,
+    .carousel,
+    .carousel-inner,
+    .carousel-inner .item {
+      height: 100%;
+    } 
+    .item:nth-child(1) {
+      background: url('https://snap-photos.s3.amazonaws.com/img-thumbs/960w/HZZKGVVJ6I.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+    }
+
+    .item:nth-child(2) {
+      background: url('https://snap-photos.s3.amazonaws.com/img-thumbs/960w/D2ROMCUEIV.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+    }
+
+    .item:nth-child(3) {
+      background: url('https://snap-photos.s3.amazonaws.com/img-thumbs/960w/PU9HHZB5QW.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="School Logo">
+            <h1>Hercor College <span>Lawaan/ Riverside Campus, Roxas City</span></h1>
+        </div>
+        <button class="toggle-button">&#9776;</button> <!-- Burger menu icon -->
+        <nav class="primary-nav">
+            <ul>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="#">Core Values</a>
+                        <a href="#">Mission</a>
+                        <a href="#">Vision</a>
+                        <a href="#">About</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Academics</a>
+                    <div class="dropdown-content">
+                        <a href="#">Scholarship</a>
+                        <a href="#">Academic Policies</a>
+                        <a href="#">Courses</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Admissions</a>
+                    <div class="dropdown-content">
+                        <a href="#">Requirements</a>
+                        <a href="#">Enrollment</a>
+                        <a href="#">Apply</a>
+                    </div>
+                </li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <nav class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Home</a>
+        <a href="javascript:void(0)" class="dropdown-btn">About</a>
+        <div class="dropdown-content">
+            <a href="#">Core Values</a>
+            <a href="#">Mission</a>
+            <a href="#">Vision</a>
+            <a href="#">About</a>
+        </div>
+        <a href="javascript:void(0)" class="dropdown-btn">Academics</a>
+        <div class="dropdown-content">
+            <a href="#">Scholarship</a>
+            <a href="#">Academic Policies</a>
+            <a href="#">Courses</a>
+        </div>
+        <a href="javascript:void(0)" class="dropdown-btn">Admissions</a>
+        <div class="dropdown-content">
+            <a href="#">Requirements</a>
+            <a href="#">Enrollment</a>
+            <a href="#">Apply</a>
+        </div>
+        <a href="#">Contact</a>
+    </nav>
+           
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.querySelector('.toggle-button');
+            const sidebar = document.getElementById('mySidebar');
+            const sidebarDropdownButtons = document.querySelectorAll('.sidebar .dropdown-btn');
+            const primaryDropdowns = document.querySelectorAll('.primary-nav .dropdown > .dropbtn');
+
+            toggleButton.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
+            });
+
+            sidebarDropdownButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('active');
+                    const dropdownContent = button.nextElementSibling;
+                    if (dropdownContent.style.display === 'block') {
+                        dropdownContent.style.display = 'none';
+                    } else {
+                        dropdownContent.style.display = 'block';
+                    }
+                });
+            });
+
+            // Primary navigation dropdowns
+            primaryDropdowns.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    const dropdownContent = button.nextElementSibling;
+                    const isActive = button.parentElement.classList.contains('active');
+                    document.querySelectorAll('.primary-nav .dropdown').forEach(item => {
+                        item.classList.remove('active');
+                        item.querySelector('.dropdown-content').style.display = 'none';
+                    });
+                    if (!isActive) {
+                        button.parentElement.classList.add('active');
+                        dropdownContent.style.display = 'block';
+                    }
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                const isDropdownButton = e.target.matches('.dropbtn');
+                if (!isDropdownButton && e.target.closest('.dropdown') == null) {
+                    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        function closeNav() {
+            document.getElementById("mySidebar").classList.remove('active');
+        }
+    </script>
+</body>
+</html>
